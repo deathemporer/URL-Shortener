@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: #232931;
+            padding: 50px;
+            padding-top: 5px;
+            font-family: montserrat;
+            text-align: center;
+        }
+
+        .container{
+            width: 100%;
+        }
+
+        .heading{
+            background-color: #393e46;
+            border-radius: 10px;
+            width: 100%;
+            color: #eeeeee;
+        }
+
+        tr:nth-child(even){
+            background-color: #393e46;
+        }
+    </style>
+    <title>Shorten URLs</title>
+</head>
+<body>
+
+   
+    <div class="heading">
+        <h1>URL Shrinker</h1>
+    </div>
+    <div class="container"></div>
+        <form action="/shortURLs" method="POST" class="my-4 form-inline">
+            <label for="fullURL" class="sr-only">URL</label>
+            <input class="from-control col mr-2" placeholder="URL" type="url" name="fullURL" id="fullURL" style="border-radius: 5px;">
+            <button class="btn btn-success" type="submit" style="background-color: #4ecca3;">Shrink</button>
+        </form>
+
+        <table class="table table-striped" style="width: 100%; border: 2px solid #eeeeee; border-radius: 10px;">
+            <thead>
+                <tr style="background-color: #4ecca3;">
+                    <th style="color: #eeeeee; width: 50%;">Full URL</th>
+                    <th style="color: #eeeeee;">Short URL</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% shortURLS.forEach(shortURL =>{ %>
+                    <tr>
+                        <td><a href="<%= shortURL.full%>"><%= shortURL.full%></a></td>
+                        <td><a href="<%= shortURL.short%>"><%= shortURL.short%></a></td>
+                    </tr>
+                <% }) %> 
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

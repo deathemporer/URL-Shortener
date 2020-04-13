@@ -7,7 +7,8 @@ mongoose.connect('mongodb://localhost/URLShortener', {
     useNewUrlParser: true, useUnifiedTopology: true
 })
 app.set('view engine','ejs')
-app.use(express.urlencoded({ extended:false}))
+//app.use(express.urlencoded({ extended:false}))
+app.use(express.static(__dirname + "/views"))
 
 app.get('/', async (req,res) =>{
     const shortURLS = await ShortURL.find()
